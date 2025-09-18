@@ -1,18 +1,18 @@
 using System.Collections;                         // Needed for IEnumerator and Coroutines
-using System.Collections.Generic;                 // Generic collections (not used here, but often included by default)
 using UnityEngine;                                // Unity engine base classes
 using UnityEngine.EventSystems;                   // Gives access to drag events (OnBeginDrag, OnDrag, OnEndDrag)
-//using static System.Net.Mime.MediaTypeNames;    // Commented out: would import media type names if needed
 using UnityEngine.UI;                             // Needed for UI elements like Image
-
 // This script allows a UI object (like a card with an Image) to be swiped left or right
 // If swiped far enough, it animates off-screen and fades away
 public class swipingscript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     // ---------------- VARIABLES ----------------
+    public GameObject itsAMatch;
+    public GameObject notForYou;
     private Vector3 _initialPosition;             // Stores the position of the card before dragging
     private float _distanceMoved;                 // How far the card moved during drag
     private bool _swipeLeft;                      // Tracks swipe direction (true = left, false = right)
+    public int _finalCount = 7;                      // Counts if all cards have been swiped using the static counter
 
     // Called when dragging begins (mouse or finger down)
     public void OnBeginDrag(PointerEventData eventData)
@@ -54,7 +54,35 @@ public class swipingscript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
             {
                 _swipeLeft = true;   // Swiped to the left
             }
-
+            /*
+             * ------------------ COUNTER LOGIC ------------------
+             * We update the Yes/No counters here before the card is destroyed.
+             * The counters are stored in a separate static script called SwipeStats.cs
+             * 
+             * SwipeStats.cs looks like this:
+             * 
+             * public static class SwipeStats
+             * {
+             *     public static int YesCount = 0;
+             *     public static int NoCount = 0;
+             * }
+             * 
+             * - Because it's static, it lives in memory for the whole session.
+             * - It does NOT go on any GameObject or Image in the scene.
+             * - Every time a card is swiped, we increment the correct counter.
+             * - The card itself will still get destroyed, but the numbers stay stored in SwipeStats.
+             * ---------------------------------------------------
+             */
+            if (_swipeLeft)
+            {
+                SwipeStats.NoCount++;
+                Debug.Log("No count: " + SwipeStats.NoCount);
+            }
+            else
+            {
+                SwipeStats.YesCount++;
+                Debug.Log("Yes count: " + SwipeStats.YesCount);
+            }
             // Start the animation coroutine to move the card away
             StartCoroutine(routine: MovedCard());
         }
@@ -103,6 +131,18 @@ public class swipingscript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
             yield return null; // Wait until next frame before continuing
         }
 
+
+        if (SwipeStats.YesCount + SwipeStats.NoCount == _finalCount)
+        {
+            if (SwipeStats.YesCount > 3)
+            {
+                yesOrNoChanger("Its a Match Panel");
+            }
+            else
+            {
+                yesOrNoChanger("NotForYouPanel");
+            }
+        }
         // Once fully faded, destroy the card object
         Destroy(gameObject);
     }
@@ -118,4 +158,9 @@ public class swipingscript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     {
         // Nothing here (can be removed if unused)
     }
+    public void yesOrNoChanger(string nameOfPanel)
+        {
+            itsAMatch.SetActive(nameOfPanel == "Its a Match Panel");
+            notForYou.SetActive(nameOfPanel == "NotForYouPanel");  
+        }
 }
