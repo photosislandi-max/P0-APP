@@ -7,6 +7,10 @@ public class ButtonNavigation : MonoBehaviour
     public GameObject welcomePanel;
     public GameObject itsAMatch;
     public GameObject notForYou;
+     public GameObject socialPanel;
+    public GameObject projectsPanel;
+    public GameObject getSmarterPanel;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,6 +30,9 @@ public class ButtonNavigation : MonoBehaviour
         welcomePanel.SetActive(nameOfPanel == "Welcome panel");
         itsAMatch.SetActive(nameOfPanel == "Its a Match Panel");
         notForYou.SetActive(nameOfPanel == "NotForYouPanel");
+        socialPanel.SetActive(nameOfPanel == "detSociale Panel");
+        projectsPanel.SetActive(nameOfPanel == "blivKlogerePanel");
+        getSmarterPanel.SetActive(nameOfPanel == "projekterPanel");
         
     }
 }
