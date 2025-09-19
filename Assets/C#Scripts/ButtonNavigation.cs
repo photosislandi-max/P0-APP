@@ -5,9 +5,7 @@ public class ButtonNavigation : MonoBehaviour
     public GameObject homePagePanel;
     public GameObject tinderswipepanel;
     public GameObject welcomePanel;
-
     public GameObject itsAMatch;
-
     public GameObject notForYou;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
