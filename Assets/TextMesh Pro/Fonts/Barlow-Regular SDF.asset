@@ -67312,8 +67312,6 @@ MonoBehaviour:
           m_XAdvance: -0.54
           m_YAdvance: 0
       m_SecondAdjustmentRecord:
-<<<<<<< HEAD
-=======
         m_GlyphIndex: 639
         m_GlyphValueRecord:
           m_XPlacement: 0
@@ -74064,7 +74062,6 @@ MonoBehaviour:
           m_XAdvance: -0.81000006
           m_YAdvance: 0
       m_SecondAdjustmentRecord:
->>>>>>> 547d1d917f5be70a4115623c84910b1f0869fe16
         m_GlyphIndex: 639
         m_GlyphValueRecord:
           m_XPlacement: 0
@@ -74072,8 +74069,6 @@ MonoBehaviour:
           m_XAdvance: 0
           m_YAdvance: 0
       m_FeatureLookupFlags: 0
-<<<<<<< HEAD
-=======
     - m_FirstAdjustmentRecord:
         m_GlyphIndex: 153
         m_GlyphValueRecord:
@@ -76849,7 +76844,6 @@ MonoBehaviour:
           m_XAdvance: 0
           m_YAdvance: 0
       m_FeatureLookupFlags: 0
->>>>>>> 547d1d917f5be70a4115623c84910b1f0869fe16
     m_MarkToBaseAdjustmentRecords:
     - m_BaseGlyphID: 4
       m_BaseGlyphAnchorPoint:
@@ -84275,8 +84269,6 @@ MonoBehaviour:
       m_MarkPositionAdjustment:
         m_XPositionAdjustment: -39.510002
         m_YPositionAdjustment: 45.54
-<<<<<<< HEAD
-=======
     - m_BaseGlyphID: 353
       m_BaseGlyphAnchorPoint:
         m_XCoordinate: 19.800001
@@ -84973,7 +84965,6 @@ MonoBehaviour:
       m_MarkPositionAdjustment:
         m_XPositionAdjustment: -39.510002
         m_YPositionAdjustment: 45.54
->>>>>>> 547d1d917f5be70a4115623c84910b1f0869fe16
     m_MarkToMarkAdjustmentRecords: []
   m_ShouldReimportFontFeatures: 0
   m_FallbackFontAssetTable: []
