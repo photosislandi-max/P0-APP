@@ -31,8 +31,8 @@ public class ButtonNavigation : MonoBehaviour
         itsAMatch.SetActive(nameOfPanel == "Its a Match Panel");
         notForYou.SetActive(nameOfPanel == "NotForYouPanel");
         socialPanel.SetActive(nameOfPanel == "detSociale Panel");
-        projectsPanel.SetActive(nameOfPanel == "blivKlogerePanel");
-        getSmarterPanel.SetActive(nameOfPanel == "projekterPanel");
+        projectsPanel.SetActive(nameOfPanel == "projekterPanel");
+        getSmarterPanel.SetActive(nameOfPanel == "blivKlogerePanel");
         
     }
 }
