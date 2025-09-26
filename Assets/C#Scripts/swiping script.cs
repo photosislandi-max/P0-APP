@@ -20,7 +20,12 @@ public class swipingscript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         // Save the starting position of the card
         _initialPosition = transform.localPosition;
     }
+    private Vector3 _startPosition;
 
+    public Vector3 GetStartPosition()
+    {
+        return _startPosition;
+    }
     // Called continuously while dragging
     public void OnDrag(PointerEventData eventData)
     {
@@ -134,7 +139,7 @@ public class swipingscript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
         if (SwipeStats.YesCount + SwipeStats.NoCount == _finalCount)
         {
-            if (SwipeStats.YesCount > 3)
+            if (SwipeStats.YesCount > SwipeStats.NoCount)
             {
                 yesOrNoChanger("Its a Match Panel");
             }
@@ -143,8 +148,8 @@ public class swipingscript : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 yesOrNoChanger("NotForYouPanel");
             }
         }
-        // Once fully faded, destroy the card object
-        Destroy(gameObject);
+        // Once fully faded, disable 
+        gameObject.SetActive(false);
     }
 
     // Unity lifecycle method: called once before the first Update
